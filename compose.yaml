@@ -1,4 +1,4 @@
-# Execute this command in your shell if you want to run this docker compose file on ARM architectures
+# Execute this command in your shell if you want to run this compose file on ARM architectures
 # export DOCKER_DEFAULT_PLATFORM=linux/amd64
 version: "3.8"
 services:
@@ -10,10 +10,12 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Mount the named volume
     networks:
       - syson
   app:
-    image: docker.io/eclipsesyson/syson:v2025.12.0
+    image: docker.io/eclipsesyson/syson:v2025.1.4
     ports:
       - "8080:8080"
     environment:
@@ -28,3 +30,5 @@ services:
       - syson
 networks:
   syson:
+volumes:
+  postgres_data: # Define the named volume at the top level
