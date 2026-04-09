@@ -15,7 +15,7 @@ services:
     networks:
       - syson
   app:
-    image: docker.io/eclipsesyson/syson:v2026.1.4
+    image: docker.io/eclipsesyson/syson:v2026.3.0
     ports:
       - "8080:8080"
     environment:
@@ -31,4 +31,4 @@ services:
 networks:
   syson:
 volumes:
-  postgres_data: # Define the named volume at the top level
+  postgres-data: # Define the named volume at the top level
